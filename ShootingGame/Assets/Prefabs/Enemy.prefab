@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   - 114: {fileID: 11477626}
   - 114: {fileID: 11440584}
   - 50: {fileID: 5079008}
-  m_Layer: 0
+  - 60: {fileID: 6075688}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409006}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17999995, z: 0}
+  m_LocalPosition: {x: .0370000005, y: .976000011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434740}
@@ -132,6 +133,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &6075688
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135584}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -.166613817, y: .24184835}
+      - {x: -.240133524, y: .143697619}
+      - {x: -.241009861, y: -.170033038}
+      - {x: -.146393418, y: -.258158982}
+      - {x: .163249195, y: -.257760704}
+      - {x: .237760812, y: -.186498404}
+      - {x: .234706938, y: .163358212}
+      - {x: .142019987, y: .243029833}
 --- !u!95 &9552142
 Animator:
   serializedVersion: 3
@@ -174,7 +196,8 @@ MonoBehaviour:
   speed: .5
   shotDelay: 1
   bullet: {fileID: 127092, guid: 58425220de213e9408975d4d7c60daaf, type: 2}
-  canShot: 1
+  canShot: 0
+  explosion: {fileID: 151832, guid: 576b60305fd7c5e4a98a18f039aae937, type: 2}
 --- !u!212 &21242212
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -211,6 +234,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

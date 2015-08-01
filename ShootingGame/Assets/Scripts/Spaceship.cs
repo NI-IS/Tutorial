@@ -15,6 +15,15 @@ public class Spaceship : MonoBehaviour {
 	//弾を撃つがどうか
 	public bool canShot;
 
+	//爆発のprefab
+	public GameObject explosion;
+
+	//爆殺の作成
+	public void Explosion(){
+		Instantiate (explosion, transform.position, transform.rotation);
+	}
+
+	//弾の作成
 	public void Shot (Transform origin){
 		Instantiate (bullet, origin.position, origin.rotation);
 	}
