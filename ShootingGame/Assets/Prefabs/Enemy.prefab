@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0370000005, y: .976000011, z: 0}
+  m_LocalPosition: {x: 2.79761219, y: .0985078812, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434740}
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b282c35bb4866541a625c8a4b51a1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
 --- !u!114 &11477626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,7 +197,7 @@ MonoBehaviour:
   speed: .5
   shotDelay: 1
   bullet: {fileID: 127092, guid: 58425220de213e9408975d4d7c60daaf, type: 2}
-  canShot: 1
+  canShot: 0
   explosion: {fileID: 151832, guid: 576b60305fd7c5e4a98a18f039aae937, type: 2}
 --- !u!212 &21242212
 SpriteRenderer:

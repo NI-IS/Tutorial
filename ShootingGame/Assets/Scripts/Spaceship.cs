@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Spaceship : MonoBehaviour {
 
 	//移動スピード
@@ -18,6 +19,14 @@ public class Spaceship : MonoBehaviour {
 	//爆発のprefab
 	public GameObject explosion;
 
+	//アニメーターコンポーネント
+	private Animator animator;
+
+	void Start(){
+		//アニメーターコンポーネントを取得
+		animator = GetComponent<Animator> ();
+	}
+
 	//爆殺の作成
 	public void Explosion(){
 		Instantiate (explosion, transform.position, transform.rotation);
@@ -27,9 +36,8 @@ public class Spaceship : MonoBehaviour {
 	public void Shot (Transform origin){
 		Instantiate (bullet, origin.position, origin.rotation);
 	}
-
-	//機体の移動
-	public void Move(Vector2 direction){
-		GetComponent<Rigidbody2D>().velocity = direction * speed;
+	//アニメータコンポーネントの取得
+	public Animator GetAnimator(){
+		return animator;
 	}
 }

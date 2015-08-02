@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
+	//ヒットポイント
+	public int hp = 1;
+
 	//Spaceshipコンポーネント
 	Spaceship spaceship;
 
@@ -12,7 +15,7 @@ public class Enemy : MonoBehaviour {
 		spaceship = GetComponent<Spaceship>();
 
 		//ローカル座標のy軸マイナス方向に移動する
-		spaceship.Move (transform.up * -1);
+		Move (transform.up * -1);
 
 		//canShotがfalseの場合、ここでコルーチンを終了させる
 		if (spaceship.canShot == false) {
@@ -34,6 +37,11 @@ public class Enemy : MonoBehaviour {
 
 	}
 
+	//機体の移動
+	public void Move(Vector2 direction){
+		GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
+	}
+
 	void OnTriggerEnter2D(Collider2D c){
 
 		//レイヤー名を習得
@@ -43,14 +51,27 @@ public class Enemy : MonoBehaviour {
 		if (layerName != "Bullet(Player)")
 			return;
 
+		//PlayerBulletのTransformを取得
+		Transform playerBulletTransform = c.transform.parent;
+
+		//Bulletコンポーネントを取得
+		Bullet bullet = playerBulletTransform.GetComponent<Bullet> ();
+
+		//ヒットポイントを減らす
+		hp = hp - bullet.power;
+
 		//弾の削除
 		Destroy (c.gameObject);
 
-		//爆発
-		spaceship.Explosion ();
+		if (hp <= 0) {
+			//爆発
+			spaceship.Explosion ();
 
-		//エネミー削除
-		Destroy (gameObject);
+			//エネミー削除
+			Destroy (gameObject);
+		} else {
+			spaceship.GetAnimator().SetTrigger("Damage");
+		}
 
 	}
 }
