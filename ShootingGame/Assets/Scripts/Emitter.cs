@@ -32,6 +32,9 @@ public class Emitter : MonoBehaviour {
 			//Waveを作成する
 			GameObject wave = (GameObject)Instantiate (waves [currentWave],transform.position,Quaternion.identity);
 
+			//WaveをEmitterの子要素にする
+			wave.transform.parent = transform;
+
 			//Waveの子要素のEnemyが全て削除されるまで待機する
 			while(wave.transform.childCount != 0){
 				yield return new WaitForEndOfFrame();
